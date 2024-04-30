@@ -1,10 +1,16 @@
 # Flowmodoro
 
-Welcome to Flowmodoro, a simple chrome application for utilizing the Flow Time (aka flowmodoro) timer system.
+Welcome to Flowmodoro, a simple chrome application for utilizing the Flow Time (aka flowmodoro) timer system. Flowmodoro takes inspiration from the standard pomodoro time management sytem, but instead of fixed time blocks you work until you want to stop. Then your break time is automatically calculated for you.
 
 **How do I use Flowmodoro?**
 
-Start
+Start the Flow Time timer. This is your time to get focused, and get some work done.
+
+When you come to a natural stopping point, switch over to break time. When your break time is over, repeat the process.
+
+**How is my break time calculated?**
+
+Breaks are always 1/5 of the time you spent focused. For example, if you worked for 50 minutes, your break time would be 10 minutes.
 
 ## Install Instructions
 
