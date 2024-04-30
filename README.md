@@ -1,6 +1,6 @@
 # Flowmodoro
 
-Welcome to Flowmodoro, a simple chrome application for utilizing the Flow Time (aka flowmodoro) timer system. Flowmodoro takes inspiration from the standard pomodoro time management sytem, but instead of fixed time blocks you work until you want to stop. Then your break time is automatically calculated for you.
+Welcome to Flowmodoro, a simple chrome extension for utilizing the Flow Time (aka flowmodoro) timer system. Flowmodoro takes inspiration from the standard pomodoro time management sytem, but instead of fixed time blocks you work until you want to stop. Then your break time is automatically calculated for you.
 
 **How do I use Flowmodoro?**
 
