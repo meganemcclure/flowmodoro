@@ -1,30 +1,31 @@
-# React + TypeScript + Vite
+# Flowmodoro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Install Instructions
 
-Currently, two official plugins are available:
+Please follow the instructions for installing developer extensions [here](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
 
-## Expanding the ESLint configuration
+1. Clone the repo
+2. Run the following commands in the project directory
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+npm install
+npm run build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Follow the instructions for installing developer extensions [here](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked). When unpacking, select the `flowomodoro/dist` file.
+4. (Optional) If you wish to do any development work on this extension run the following to enable live changes.
+
+```
+npm run watch
+```
+
+## Dev Details
+
+This project supports the following commands
+
+1. `npm install` - install all node module dependencies
+2. `npm run build` - build the project (create the dist folder)
+3. `npm run lint` - run the linter to fix styling issues
+4. `npm run watch` - allow live updates (dynamically update the `dist` folder)
