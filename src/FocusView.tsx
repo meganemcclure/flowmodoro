@@ -6,21 +6,6 @@ interface FocusViewProps {
   toggleFocusTime: (time: number) => void
 }
 
-function initTime() {
-  let now = Date.now()
-  let saved = localStorage.getItem('timerStart')
-
-  console.log(`now: ${now}`)
-  console.log(`saved: ${saved}`)
-
-  if (saved) {
-    let diff = (now - JSON.parse(saved)) / 1000
-    console.log(`difference: ${diff}`)
-    return diff
-  }
-  return 0
-}
-
 function FocusView({ toggleFocusTime }: FocusViewProps) {
   const [time, setTime] = useState(initTime()); // time in seconds
   const [isRunning, setIsRunning] = useState(localStorage.getItem('timerStart') !== null);
@@ -37,6 +22,14 @@ function FocusView({ toggleFocusTime }: FocusViewProps) {
     return () => clearInterval(intervalId);
   }, [isRunning, time]);
 
+  function initTime() {
+    let now = Date.now()
+    let saved = localStorage.getItem('timerStart')
+  
+    if (saved) return (now - JSON.parse(saved)) / 1000
+    return 0
+  }
+
   function resetTime() {
     setTime(0)
     setIsRunning(false)
@@ -46,6 +39,11 @@ function FocusView({ toggleFocusTime }: FocusViewProps) {
   function start() {
     setIsRunning(true)
     localStorage.setItem('timerStart', JSON.stringify(Date.now()))
+  }
+
+  function handleModeSwitch() {
+    resetTime()
+    toggleFocusTime(time)
   }
   
   return (
@@ -61,7 +59,7 @@ function FocusView({ toggleFocusTime }: FocusViewProps) {
       <div>
         <button onClick={start}>Start</button>
         <button onClick={resetTime}>Reset</button>
-        <button onClick={() => toggleFocusTime(time)}>Start Break</button>
+        <button onClick={handleModeSwitch}>Start Break</button>
       </div>
     </div>
   );
