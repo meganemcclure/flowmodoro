@@ -12,21 +12,23 @@ function App() {
     localStorage.setItem('isFocusTime', JSON.stringify(isFocusTime))
   }, [isFocusTime])
 
-  function toggleFocusTime(time?: number) {
-    setIsFocusTime(!isFocusTime)
-    if (time) setBreakTime(time / 5)
-  }
-
   function initIsFocusTime() {
     let saved = localStorage.getItem('isFocusTime')
 
     if (saved) return JSON.parse(saved)
     return true
   }
+
+  function toggleFocusTime(time?: number) {
+    setIsFocusTime(!isFocusTime)
+    if (time) setBreakTime(time / 5)
+  }
   
   return (
     <>
-      {isFocusTime ? <FocusView toggleFocusTime={toggleFocusTime}/> : <BreakView toggleFocusTime={toggleFocusTime} breakTime={breakTime}/>}
+      {isFocusTime ? 
+        <FocusView toggleFocusTime={toggleFocusTime}/> : 
+        <BreakView toggleFocusTime={toggleFocusTime} breakTime={breakTime}/>}
     </>
   );
 }

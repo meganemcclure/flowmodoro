@@ -7,7 +7,7 @@ interface FocusViewProps {
 }
 
 function FocusView({ toggleFocusTime }: FocusViewProps) {
-  const [time, setTime] = useState(initTime()); // time in seconds
+  const [time, setTime] = useState(initTime()); // time accumulated on focus timer, in seconds
   const [isRunning, setIsRunning] = useState(localStorage.getItem('timerStart') !== null);
 
   const hours = Math.floor(time / 3600);
