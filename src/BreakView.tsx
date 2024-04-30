@@ -9,7 +9,7 @@ interface BreaViewProps {
 
 function BreakView({ toggleFocusTime, breakTime }: BreaViewProps) {
   const [time, setTime] = useState(breakTime);
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning] = useState(true);
 
   const hours = Math.floor(time / 360000);
   const minutes = Math.floor((time % 360000) / 6000);
