@@ -9,7 +9,6 @@ interface BreakViewProps {
 
 function BreakView({ toggleFocusTime, breakTime }: BreakViewProps) {
   const [time, setTime] = useState(initBreakTime(breakTime));  // time alloted for break, in seconds
-  const [isRunning] = useState(true);
 
   const hours = Math.floor(time / 3600);
   const minutes = Math.floor((time % 3600) / 60);
@@ -17,18 +16,24 @@ function BreakView({ toggleFocusTime, breakTime }: BreakViewProps) {
 
   useEffect(() => {
     let intervalId: number | undefined;
-    if (isRunning && time >= 1) {
+    if (time >= 1) {
       intervalId = setInterval(() => setTime(time - 1), 1000);
       localStorage.setItem('breakTime', JSON.stringify(time - 1))
     }
     return () => clearInterval(intervalId);
-  }, [isRunning, time]);
+  }, [time]);
 
   function initBreakTime(breakTime: number) {
     let saved = localStorage.getItem('breakTime')
   
     if (saved) return JSON.parse(saved)
     return breakTime
+  }
+
+  function handleModeSwitch() {
+    setTime(0)
+    localStorage.removeItem('breakTime')
+    toggleFocusTime()
   }
   
   return (
@@ -42,10 +47,7 @@ function BreakView({ toggleFocusTime, breakTime }: BreakViewProps) {
       </h1>
 
       <div>
-        <button disabled={false} onClick={() => {
-          localStorage.removeItem('breakTime')
-          toggleFocusTime()
-        }}>Resume Focus Time</button>
+        <button disabled={false} onClick={handleModeSwitch}>Resume Focus Time</button>
       </div>
     </div>
   );

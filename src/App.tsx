@@ -22,6 +22,7 @@ function App() {
   function toggleFocusTime(time?: number) {
     setIsFocusTime(!isFocusTime)
     if (time) setBreakTime(time / 5)
+    else setBreakTime(0)
   }
   
   return (
