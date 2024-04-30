@@ -8,3 +8,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 )
+
+function runWorker() {
+  const myWorker = new Worker("worker.js");
+}

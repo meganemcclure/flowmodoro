@@ -6,24 +6,47 @@ interface FocusViewProps {
   toggleFocusTime: (time: number) => void
 }
 
-function FocusView({ toggleFocusTime }: FocusViewProps) {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+function initTime() {
+  let now = Date.now()
+  let saved = localStorage.getItem('timerStart')
 
-  const hours = Math.floor(time / 360000);
-  const minutes = Math.floor((time % 360000) / 6000);
-  const seconds = Math.floor((time % 6000) / 100);
+  console.log(`now: ${now}`)
+  console.log(`saved: ${saved}`)
+
+  if (saved) {
+    let diff = (now - JSON.parse(saved)) / 1000
+    console.log(`difference: ${diff}`)
+    return diff
+  }
+  return 0
+}
+
+function FocusView({ toggleFocusTime }: FocusViewProps) {
+  const [time, setTime] = useState(initTime()); // time in seconds
+  const [isRunning, setIsRunning] = useState(localStorage.getItem('timerStart') !== null);
+
+  const hours = Math.floor(time / 3600);
+  const minutes = Math.floor((time % 3600) / 60);
+  const seconds = Math.floor((time % 60));
 
   useEffect(() => {
-    let intervalId: number | undefined;
+    let intervalId: number | undefined
     if (isRunning) {
-      intervalId = setInterval(() => setTime(time + 1), 10);
+      intervalId = setInterval(() => setTime(time + 1), 1000)
     }
     return () => clearInterval(intervalId);
   }, [isRunning, time]);
 
-  function toggleStartStop() {setIsRunning(!isRunning)}
-  function resetTime() {setTime(0)}
+  function resetTime() {
+    setTime(0)
+    setIsRunning(false)
+    localStorage.removeItem('timerStart')
+  }
+
+  function start() {
+    setIsRunning(true)
+    localStorage.setItem('timerStart', JSON.stringify(Date.now()))
+  }
   
   return (
     <div>
@@ -36,7 +59,7 @@ function FocusView({ toggleFocusTime }: FocusViewProps) {
       </h1>
 
       <div>
-        <button onClick={toggleStartStop}>{isRunning ? 'Pause' : 'Start'}</button>
+        <button onClick={start}>Start</button>
         <button onClick={resetTime}>Reset</button>
         <button onClick={() => toggleFocusTime(time)}>Start Break</button>
       </div>
