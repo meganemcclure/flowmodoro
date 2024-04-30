@@ -1,5 +1,11 @@
 # Flowmodoro
 
+Welcome to Flowmodoro, a simple chrome application for utilizing the Flow Time (aka flowmodoro) timer system.
+
+**How do I use Flowmodoro?**
+
+Start
+
 ## Install Instructions
 
 Please follow the instructions for installing developer extensions [here](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
