@@ -8,6 +8,7 @@
       "default_icon": "stopwatch.png"
     },
     "permissions": [
-      "storage"
+      "storage",
+      "alarms"
     ]
   }

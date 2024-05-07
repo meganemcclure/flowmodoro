@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createAlarm, addListener } from './alarms'
 
 import './App.css'
 
@@ -44,6 +45,8 @@ function FocusView({ toggleFocusTime }: FocusViewProps) {
   function handleModeSwitch() {
     resetTime()
     toggleFocusTime(time)
+    createAlarm()
+    addListener()
   }
   
   return (
